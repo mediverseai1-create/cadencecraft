@@ -1,26 +1,82 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand: #5951ff;
+  --brand-dark: #4a42e8;
+  --ink: #140a45;
+  --night: #1a0a4f;
+  --night-2: #2a1470;
+  --lavender: #f3f0ff;
+  --muted: #5b5879;
+  --line: #e4e0f5;
+  --nav: #000000;
+  --peach: #ffb27a;
+  --lilac: #a98bf5;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-ink: var(--ink);
+  --color-night: var(--night);
+  --color-lavender: var(--lavender);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-sans: var(--font-lexend), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html { scroll-behavior: smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-lexend), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+.dot-bg {
+  background-color: #f6f3ff;
+  background-image: radial-gradient(#d9d3f3 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.hero-night {
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 20%, rgba(120, 80, 255, 0.35), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 100%, rgba(90, 60, 220, 0.4), transparent 60%),
+    linear-gradient(180deg, #14083f 0%, #1d0b5a 100%);
+}
+.band-night {
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(110, 70, 255, 0.35), transparent 60%),
+    linear-gradient(180deg, #1a0a4f 0%, #12063a 100%);
+}
+.grad-text {
+  background: linear-gradient(90deg, #ffb27a 0%, #ff9a8b 35%, #a98bf5 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.card-dark {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  background: rgba(20, 8, 70, 0.55);
+}
+.card-light {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(60, 40, 140, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card-light:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(60, 40, 140, 0.12); }
+
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+.float { animation: float 6s ease-in-out infinite; }
+@keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+.marquee { animation: marquee 40s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .float, .marquee { animation: none; } }
