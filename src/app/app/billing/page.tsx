@@ -4,7 +4,6 @@ import { plans } from "@/content/plans";
 const links: Record<string, string | undefined> = {
   essentials: process.env.NEXT_PUBLIC_PAYMENT_LINK_ESSENTIALS,
   core: process.env.NEXT_PUBLIC_PAYMENT_LINK_CORE,
-  plus: process.env.NEXT_PUBLIC_PAYMENT_LINK_PLUS,
   pro: process.env.NEXT_PUBLIC_PAYMENT_LINK_PRO,
 };
 
@@ -21,7 +20,7 @@ export default async function Billing() {
         <p className="mt-1 text-sm text-muted">{ws ? `${ws.credits_used.toLocaleString()} of ${ws.credits_total.toLocaleString()} credits used` : ""}</p>
         <p className="mt-3 text-xs text-muted">Workspace ID (include in payment reference): <code>{ws?.id}</code></p></div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {plans.map((p) => {
+        {[...plans].filter((p) => p.price > 0).sort((a, b) => a.price - b.price).map((p) => {
           const href = links[p.id];
           return (
             <div key={p.id} className="card-light flex flex-col p-6"><h2 className="font-semibold">{p.name}</h2><p className="mt-2 text-2xl font-semibold text-brand">{p.credits.toLocaleString()} <span className="text-sm text-muted">credits</span></p>

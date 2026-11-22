@@ -13,7 +13,7 @@ export default async function UseCasePage({ params }: { params: Promise<{ slug: 
   if (!u) notFound();
   return (
     <main>
-      <PageHero eyebrow={`For ${u.title}`} title={u.pitch} cta={<Button href="/demo">Request demo</Button>}>
+      <PageHero eyebrow={`For ${u.title}`} title={u.pitch} cta={<Button href="/signup">Sign up</Button>}>
         <ul className="space-y-2">{u.points.map((p) => <li key={p}>✦ {p}</li>)}</ul>
       </PageHero>
       <Section>

@@ -27,7 +27,7 @@ export default function Home() {
             CadenceCraft agents work as teammates, taking on real work across the full revenue lifecycle to build more pipeline and close more revenue.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/demo">Request a demo</Button>
+            <Button href="/signup">Sign up</Button>
             <Button href="/platform/ai-agents" variant="outlineDark">Explore AI Agents</Button>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function Home() {
       <Section className="dot-bg text-center">
         <h2 className="mx-auto max-w-[760px] text-4xl font-semibold leading-tight md:text-5xl">AI that acts. <span className="text-brand">Revenue you can predict.</span></h2>
         <p className="mx-auto mt-6 max-w-[640px] text-lg leading-relaxed text-muted">Most tools tell you what happened. CadenceCraft agents do the follow-through: they research accounts, update the CRM, draft outreach, guide live calls and keep the forecast honest.</p>
-        <div className="mt-8"><Button href="/demo">Get a demo</Button></div>
+        <div className="mt-8"><Button href="/signup">Sign up</Button></div>
       </Section>
 
       <section className="band-night px-4 py-20 sm:px-8">

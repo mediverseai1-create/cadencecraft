@@ -1,5 +1,6 @@
 export type Plan = {
-  id: "essentials" | "core" | "plus" | "pro";
+  id: "free" | "essentials" | "core" | "pro";
+  price: number;
   name: string;
   credits: number;
   badge?: string;
@@ -10,16 +11,16 @@ export type Plan = {
 };
 
 export const plans: Plan[] = [
-  { id: "plus", name: "Amplify Plus", credits: 50000, badge: "Most Popular!", blurb: "Engagement, deals and conversation intelligence for growing teams.",
-    features: ["50,000 AI credits per month", "Sales engagement and sequences", "Pipeline and deal management", "Conversation intelligence", "Mutual action plans"],
-    limits: { apiCalls: 500000, customObjects: 10, knowledgeMb: 750 }, stat: [{ value: "81%", label: "deal-outcome accuracy (goal)" }, { value: "3x", label: "faster rep ramp (goal)" }] },
-  { id: "pro", name: "Amplify Pro", credits: 100000, blurb: "Everything in Plus with advanced forecasting and governance.",
-    features: ["100,000 AI credits per month", "Everything in Amplify Plus", "Forecast roll-ups and AI commentary", "Advanced agent governance", "Priority support"],
+  { id: "free", price: 0, name: "Free", credits: 2000, blurb: "Try the platform with a starter credit allowance.",
+    features: ["2,000 AI credits to start", "Accounts, pipeline and sequences", "Conversation analysis", "Community support"],
+    limits: { apiCalls: 10000, customObjects: 1, knowledgeMb: 50 } },
+  { id: "pro", price: 97, name: "Amplify Pro", credits: 100000, blurb: "Advanced forecasting, governance and priority support.",
+    features: ["100,000 AI credits per month", "Everything in Amplify Core", "Forecast roll-ups and AI commentary", "Advanced agent governance", "Priority support"],
     limits: { apiCalls: 1000000, customObjects: 20, knowledgeMb: 1500 }, stat: [{ value: "½", label: "the time on forecasts (goal)" }, { value: "15%", label: "fewer forecast errors (goal)" }] },
-  { id: "essentials", name: "Amplify Essentials", credits: 10000, blurb: "Conversation intelligence to start learning from every call.",
+  { id: "essentials", price: 47, name: "Amplify Essentials", credits: 10000, blurb: "Conversation intelligence to start learning from every call.",
     features: ["10,000 AI credits per month", "Conversation intelligence", "Account records", "Email support"],
     limits: { apiCalls: 100000, customObjects: 2, knowledgeMb: 250 } },
-  { id: "core", name: "Amplify Core", credits: 25000, blurb: "Pipeline and account management for lean revenue teams.",
+  { id: "core", price: 57, badge: "Most Popular!", name: "Amplify Core", credits: 25000, blurb: "Pipeline and account management for lean revenue teams.",
     features: ["25,000 AI credits per month", "Pipeline management", "Account management", "Conversation intelligence"],
     limits: { apiCalls: 250000, customObjects: 5, knowledgeMb: 500 } },
 ];

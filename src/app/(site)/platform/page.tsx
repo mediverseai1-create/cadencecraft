@@ -12,7 +12,7 @@ const industries = ["IT Services & Software", "Business Services", "Financial Se
 export default function PlatformPage() {
   return (
     <main>
-      <PageHero eyebrow="What is CadenceCraft?" title="The complete agentic AI platform purpose-built for revenue." cta={<Button href="/demo">Request demo</Button>}>
+      <PageHero eyebrow="What is CadenceCraft?" title="The complete agentic AI platform purpose-built for revenue." cta={<Button href="/signup">Sign up</Button>}>
         <p>CadenceCraft unifies prospect engagement, deal execution, coaching and revenue intelligence with integrated AI agents that can autonomously execute the work.</p>
         <p className="mt-4 rounded-lg bg-white/70 p-3 text-sm">Responsible AI: human approval, audit logs and credit limits on every agent.</p>
       </PageHero>

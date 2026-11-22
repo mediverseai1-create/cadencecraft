@@ -20,7 +20,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
   if (!m) notFound();
   return (
     <main>
-      <PageHero eyebrow={m.title} title={m.tagline} cta={<><Button href="/demo">Request demo</Button><Button href="/signup" variant="outline">Start free</Button></>}>
+      <PageHero eyebrow={m.title} title={m.tagline} cta={<><Button href="/signup">Sign up</Button><Button href="/signup" variant="outline">Start free</Button></>}>
         <p>{m.intro}</p>
       </PageHero>
       <Section>

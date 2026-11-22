@@ -10,7 +10,7 @@ export function Footer() {
           <div>
             <Logo />
             <p className="mt-4 max-w-[240px] text-sm text-white/70">The agentic AI platform for revenue teams. Hire agents. Unleash sellers.</p>
-            <Link href="/demo" className="mt-6 inline-block rounded bg-brand px-5 py-2.5 text-sm font-semibold">Get a demo</Link>
+            <Link href="/signup" className="mt-6 inline-block rounded bg-brand px-5 py-2.5 text-sm font-semibold">Sign up</Link>
           </div>
           {footerCols.map((c) => (
             <div key={c.title}>

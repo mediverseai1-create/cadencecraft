@@ -25,7 +25,7 @@ export function ClosingBand({ title = "CadenceCraft agentic AI platform for reve
         <h2 className="mt-6 text-3xl font-semibold leading-tight md:text-4xl">{title}</h2>
         <p className="mt-4 text-white/80">{tagline}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button href="/demo">Request a demo</Button>
+          <Button href="/signup">Sign up</Button>
           <Button href="/pricing" variant="outlineDark">View pricing info</Button>
         </div>
       </div>

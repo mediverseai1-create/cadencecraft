@@ -43,7 +43,7 @@ export function Header() {
         </nav>
         <div className="hidden items-center gap-5 xl:flex">
           <Link href="/login" className="font-medium text-white">Sign in</Link>
-          <Link href="/demo" className="rounded-[4px] bg-brand px-5 py-2.5 font-semibold text-white hover:bg-brand-dark">Get a demo</Link>
+          <Link href="/signup" className="rounded-[4px] bg-brand px-5 py-2.5 font-semibold text-white hover:bg-brand-dark">Sign up</Link>
         </div>
         <button className="text-white xl:hidden" aria-label="Toggle menu" onClick={() => setMobile(!mobile)}>
           {mobile ? <X /> : <Menu />}
@@ -104,7 +104,7 @@ export function Header() {
           <Link href="/pricing" onClick={close} className="block border-b border-white/15 py-3 font-medium text-white">Pricing</Link>
           <div className="mt-5 flex gap-3">
             <Link href="/login" onClick={close} className="flex-1 rounded border border-white/40 py-3 text-center text-white">Sign in</Link>
-            <Link href="/demo" onClick={close} className="flex-1 rounded bg-brand py-3 text-center font-semibold text-white">Get a demo</Link>
+            <Link href="/signup" onClick={close} className="flex-1 rounded bg-brand py-3 text-center font-semibold text-white">Sign up</Link>
           </div>
         </div>
       )}

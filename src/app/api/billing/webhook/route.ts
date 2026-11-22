@@ -8,7 +8,7 @@ import { planById } from "@/content/plans";
  * header `x-webhook-secret: $PAYMENT_WEBHOOK_SECRET`. A browser redirect alone never upgrades a plan.
  * NOTE: map your provider's real payload (and its signature scheme) onto this schema before going live.
  */
-const body = z.object({ workspaceId: z.string().uuid(), plan: z.enum(["essentials", "core", "plus", "pro"]), providerRef: z.string().min(1), provider: z.string().default("payment-link") });
+const body = z.object({ workspaceId: z.string().uuid(), plan: z.enum(["essentials", "core", "pro"]), providerRef: z.string().min(1), provider: z.string().default("payment-link") });
 
 export async function POST(req: Request) {
   const secret = process.env.PAYMENT_WEBHOOK_SECRET;

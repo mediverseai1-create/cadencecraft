@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Why CadenceCraft?" };
 export default function Why() {
   return (
     <main>
-      <PageHero eyebrow="Why CadenceCraft?" title={<>Hire agents.<br />Unleash sellers.</>} cta={<><Button href="/demo">Request demo</Button></>}>
+      <PageHero eyebrow="Why CadenceCraft?" title={<>Hire agents.<br />Unleash sellers.</>} cta={<><Button href="/signup">Sign up</Button></>}>
         <p>CadenceCraft is the agentic AI platform for revenue teams. Its agents learn your go-to-market context, take on the research, updates and follow-up that eat a seller’s day, and guide every rep during live customer conversations.</p>
       </PageHero>
       <Section><LogoStrip title="Trusted by revenue teams across sales, marketing, RevOps and customer success" /></Section>
@@ -43,7 +43,7 @@ export default function Why() {
       <Section className="dot-bg"><div className="mx-auto max-w-[720px]"><Testimonial quote="We stopped debating the data and started working the deals." name="Taylor Brooks" role="Head of RevOps" company="Meridian" /></div></Section>
       <Section className="text-center">
         <h2 className="text-3xl font-semibold md:text-4xl">Ready to build predictable revenue?</h2>
-        <div className="mt-6"><Button href="/demo">Request a demo</Button></div>
+        <div className="mt-6"><Button href="/signup">Sign up</Button></div>
       </Section>
       <Section className="dot-bg">
         <SectionTitle title="FAQ" />
