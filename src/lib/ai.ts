@@ -26,13 +26,25 @@ export async function refund(sb: Awaited<ReturnType<typeof serverClient>>, actio
 export async function generateJson<T extends z.ZodTypeAny>(prompt: string, schema: T): Promise<z.infer<T>> {
   const key = process.env.GEMINI_API_KEY;
   if (!key) throw new AppError("AI is not configured. Set GEMINI_API_KEY on the server.", 503);
-  const model = new GoogleGenerativeAI(key).getGenerativeModel({
-    model: process.env.GEMINI_MODEL ?? "gemini-flash-latest",
-    generationConfig: { responseMimeType: "application/json", temperature: 0.3 },
-  });
-  const result = await model.generateContent(prompt);
+  const client = new GoogleGenerativeAI(key);
+  // Try the configured model, then a fallback; retry once each on transient overload.
+  const models = [...new Set([process.env.GEMINI_MODEL ?? "gemini-flash-latest", "gemini-2.5-flash", "gemini-2.5-flash-lite"])];
+  let text: string | null = null;
+  for (const name of models) {
+    const model = client.getGenerativeModel({ model: name, generationConfig: { responseMimeType: "application/json", temperature: 0.3 } });
+    for (let attempt = 0; attempt < 2 && text === null; attempt++) {
+      try { text = (await model.generateContent(prompt)).response.text(); }
+      catch (e) {
+        const status = (e as { status?: number }).status;
+        if (status !== 503 && status !== 429 && status !== 500) throw new AppError("AI request failed.", 502);
+        await new Promise((r) => setTimeout(r, 800));
+      }
+    }
+    if (text !== null) break;
+  }
+  if (text === null) throw new AppError("The AI service is busy right now. Try again in a minute. You were not charged.", 503);
   let parsed: unknown;
-  try { parsed = JSON.parse(result.response.text()); } catch { throw new AppError("AI returned an unreadable response. Try again.", 502); }
+  try { parsed = JSON.parse(text); } catch { throw new AppError("AI returned an unreadable response. Try again.", 502); }
   const checked = schema.safeParse(parsed);
   if (!checked.success) throw new AppError("AI response failed validation. Try again.", 502);
   return checked.data;
