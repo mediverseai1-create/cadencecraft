@@ -26,7 +26,7 @@ See `.env.example`. Server-only: `SUPABASE_SERVICE_ROLE_KEY`, `GEMINI_API_KEY`, 
 
 ## Known limitations
 
-- Supabase, Gemini and payment credentials were not provided, so nothing backend-dependent has been run end to end.
+- Email confirmation and password-reset links use the Supabase Site URL setting. Set it to the live domain in Supabase (Authentication, URL Configuration).
 - The webhook expects a simple JSON payload and shared secret. Map your payment provider's real event and signature scheme before going live.
 - Page visuals were matched from six screenshots plus a text audit; pages and sections below the fold of the reference were not visually inspected.
 
