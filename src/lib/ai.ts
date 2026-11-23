@@ -28,17 +28,16 @@ export async function generateJson<T extends z.ZodTypeAny>(prompt: string, schem
   if (!key) throw new AppError("AI is not configured. Set GEMINI_API_KEY on the server.", 503);
   const client = new GoogleGenerativeAI(key);
   // Try the configured model, then a fallback; retry once each on transient overload.
-  const models = [...new Set([process.env.GEMINI_MODEL ?? "gemini-flash-latest", "gemini-2.5-flash", "gemini-2.5-flash-lite"])];
+  const models = [...new Set([process.env.GEMINI_MODEL ?? "gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"])];
   let text: string | null = null;
   for (const name of models) {
-    const model = client.getGenerativeModel({ model: name, generationConfig: { responseMimeType: "application/json", temperature: 0.3 } });
-    for (let attempt = 0; attempt < 2 && text === null; attempt++) {
-      try { text = (await model.generateContent(prompt)).response.text(); }
-      catch (e) {
-        const status = (e as { status?: number }).status;
-        if (status !== 503 && status !== 429 && status !== 500) throw new AppError("AI request failed.", 502);
-        await new Promise((r) => setTimeout(r, 800));
-      }
+    // 15s hard cap per model so a slow upstream never hangs the request (worst case ~45s across 3 models).
+    const model = client.getGenerativeModel({ model: name, generationConfig: { responseMimeType: "application/json", temperature: 0.3 } }, { timeout: 15000 });
+    try { text = (await model.generateContent(prompt)).response.text(); }
+    catch (e) {
+      const status = (e as { status?: number }).status;
+      // Client errors (bad key, bad request) won't improve on another model; overload, 5xx and timeouts fall through.
+      if (status !== undefined && status >= 400 && status < 500 && status !== 429 && status !== 404) throw new AppError("AI request failed.", 502);
     }
     if (text !== null) break;
   }
