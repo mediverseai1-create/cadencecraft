@@ -146,3 +146,13 @@ insert into storage.buckets (id, name, public) values ('transcripts', 'transcrip
 create policy "ws files" on storage.objects for all to authenticated
   using (bucket_id = 'transcripts' and (storage.foldername(name))[1] = public.current_workspace()::text)
   with check (bucket_id = 'transcripts' and (storage.foldername(name))[1] = public.current_workspace()::text);
+
+-- Table privileges (required on projects where default grants are disabled). RLS still restricts rows.
+grant usage on schema public to anon, authenticated, service_role;
+grant all on all tables in schema public to service_role;
+grant select, insert, update, delete on public.accounts, public.contacts, public.deals, public.sequences,
+  public.conversations, public.notifications to authenticated;
+grant select, insert on public.agent_runs to authenticated;
+grant select on public.workspaces, public.profiles, public.usage_events, public.subscriptions to authenticated;
+grant update (full_name) on public.profiles to authenticated;
+grant execute on function public.current_workspace(), public.consume_credits(text, integer) to authenticated;

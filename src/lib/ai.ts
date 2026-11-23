@@ -27,7 +27,7 @@ export async function generateJson<T extends z.ZodTypeAny>(prompt: string, schem
   const key = process.env.GEMINI_API_KEY;
   if (!key) throw new AppError("AI is not configured. Set GEMINI_API_KEY on the server.", 503);
   const model = new GoogleGenerativeAI(key).getGenerativeModel({
-    model: process.env.GEMINI_MODEL ?? "gemini-2.0-flash",
+    model: process.env.GEMINI_MODEL ?? "gemini-flash-latest",
     generationConfig: { responseMimeType: "application/json", temperature: 0.3 },
   });
   const result = await model.generateContent(prompt);
