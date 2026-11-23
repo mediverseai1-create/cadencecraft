@@ -39,7 +39,7 @@ export function ProductMock() {
   return (
     <div className="relative pb-8 pl-0 sm:pl-6">
       <div className="rounded-2xl border border-line bg-white p-5 shadow-2xl">
-        <div className="flex items-center gap-2 border-b border-line pb-3 text-sm font-semibold"><LogoMark className="h-5 w-5" /> Revenue command center</div>
+        <div className="flex items-center gap-2 border-b border-line pb-3 text-sm font-semibold"><LogoMark onLight className="h-5 w-5" /> Revenue command center</div>
         <p className="mt-4 font-semibold">Forecast confidence: 94%</p>
         <div className="mt-3 rounded-lg border border-brand/50 p-3 text-xs text-muted">Ask the AI about any account, deal or call</div>
         <p className="mt-5 text-xs font-semibold">Decisions made this week</p>

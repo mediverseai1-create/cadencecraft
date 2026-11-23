@@ -4,6 +4,7 @@ import { Button, Eyebrow, Section } from "@/components/ui";
 import { Accordion } from "@/components/Accordion";
 import { ClosingBand, FeatureBlock, SectionTitle } from "@/components/blocks";
 import { useCaseNav } from "@/content/nav";
+import { AgentRoster } from "@/components/AgentRoster";
 
 const personaCopy: Record<string, string> = {
   "Revenue Operations": "One governed system where AI enforces process, cleans data and audits every agent action.",
@@ -17,29 +18,32 @@ const personaCopy: Record<string, string> = {
 export default function Home() {
   return (
     <main>
-      <section className="hero-night px-4 pb-24 pt-20 text-center text-white sm:px-8">
-        <div className="mx-auto max-w-[860px]">
-          <Eyebrow dark>AI-native revenue platform for B2B teams</Eyebrow>
-          <h1 className="mt-6 text-5xl font-semibold leading-[1.08] md:text-[4rem]">
-            Stop buying software.<br /><span className="grad-text">Start hiring AI agents.</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-[700px] text-lg leading-relaxed text-white/90">
-            CadenceCraft’s AI engine analyzes every account and call, predicts which deals will close, decides the next best action and automates the follow-through. Revenue teams close more with fewer tools.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href="/signup">Sign up</Button>
-            <Button href="/login" variant="outlineDark">Sign in</Button>
-          </div>
-        </div>
-        <div className="mx-auto mt-20 grid max-w-[900px] gap-10 sm:grid-cols-3">
-          {[["90%", "Less time spent prospecting"], ["45%", "Larger average deal size"], ["50%", "Less time preparing for meetings"]].map(([v, l]) => (
-            <div key={l}>
-              <p className="text-4xl font-semibold">{v}</p>
-              <p className="mt-1 text-white/70">{l}</p>
+      <section className="hero-night px-4 pb-20 pt-16 text-white sm:px-8 md:pt-24">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="text-center lg:text-left">
+            <Eyebrow dark>The AI platform for hiring AI agents</Eyebrow>
+            <h1 className="mt-6 text-5xl font-semibold leading-[1.06] md:text-[3.9rem]">
+              Hire AI agents.<br /><span className="grad-text">Put them to work on revenue.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-[620px] text-lg leading-relaxed text-white/90 lg:mx-0">
+              Bring on AI agents for call analysis, outreach and forecasting. Each one reads your accounts and conversations, predicts what closes, decides the next move and automates the work, under your approval and a full audit trail.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
+              <Button href="/signup">Sign up</Button>
+              <Button href="/login" variant="outlineDark">Sign in</Button>
             </div>
-          ))}
+            <div className="mt-12 grid gap-6 sm:grid-cols-3">
+              {[["90%", "Less time prospecting"], ["45%", "Larger average deal size"], ["50%", "Less meeting preparation"]].map(([v, l]) => (
+                <div key={l}>
+                  <p className="text-3xl font-semibold">{v}</p>
+                  <p className="mt-1 text-sm text-white/70">{l}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-xs text-white/50">Target outcomes for teams running CadenceCraft agents across the full lifecycle.</p>
+          </div>
+          <AgentRoster />
         </div>
-        <p className="mt-8 text-xs text-white/50">Target outcomes for teams running CadenceCraft agents across the full lifecycle.</p>
       </section>
 
       <section className="hero-night px-4 py-20 text-white sm:px-8">
