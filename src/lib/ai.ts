@@ -25,7 +25,7 @@ export async function refund(sb: Awaited<ReturnType<typeof serverClient>>, actio
 
 export async function generateJson<T extends z.ZodTypeAny>(prompt: string, schema: T): Promise<z.infer<T>> {
   const key = process.env.GEMINI_API_KEY;
-  if (!key) throw new AppError("AI is not configured. Set GEMINI_API_KEY on the server.", 503);
+  if (!key) throw new AppError("AI is temporarily unavailable. Try again shortly.", 503);
   const client = new GoogleGenerativeAI(key);
   // Try the configured model, then a fallback; retry once each on transient overload.
   const models = [...new Set([process.env.GEMINI_MODEL ?? "gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"])];

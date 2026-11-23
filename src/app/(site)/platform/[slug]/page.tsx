@@ -20,7 +20,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
   if (!m) notFound();
   return (
     <main>
-      <PageHero eyebrow={m.title} title={m.tagline} cta={<><Button href="/signup">Sign up</Button><Button href="/signup" variant="outline">Start free</Button></>}>
+      <PageHero eyebrow={m.title} title={m.tagline} cta={<><Button href="/signup">Sign up</Button><Button href="/login" variant="outline">Sign in</Button></>}>
         <p>{m.intro}</p>
       </PageHero>
       <Section>
@@ -28,7 +28,7 @@ export default async function ModulePage({ params }: { params: Promise<{ slug: s
         <CardGrid items={m.capabilities} />
       </Section>
       <Section className="dot-bg">
-        <SectionTitle eyebrow="Outcomes" title="Built to move the numbers leaders watch" intro="Figures marked target are goals, not measured customer results." />
+        <SectionTitle eyebrow="Outcomes" title="Built to move the numbers leaders watch" intro="Target outcomes for teams running CadenceCraft agents." />
         <StatRow stats={m.outcomes} />
       </Section>
       <ClosingBand />

@@ -18,7 +18,7 @@ export default async function Billing() {
       <h1 className="text-3xl font-semibold">Billing</h1>
       <div className="card-light p-6"><p className="text-sm text-muted">Current plan</p><p className="text-3xl font-semibold capitalize">{ws?.plan}</p>
         <p className="mt-1 text-sm text-muted">{ws ? `${ws.credits_used.toLocaleString()} of ${ws.credits_total.toLocaleString()} credits used` : ""}</p>
-        <p className="mt-3 text-xs text-muted">Workspace ID (include in payment reference): <code>{ws?.id}</code></p></div>
+        <p className="mt-3 text-xs text-muted">Workspace ID: <code>{ws?.id}</code></p></div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {[...plans].filter((p) => p.price > 0).sort((a, b) => a.price - b.price).map((p) => {
           const href = links[p.id];
@@ -27,12 +27,12 @@ export default async function Billing() {
               <div className="mt-auto pt-4">
                 {ws?.plan === p.id ? <p className="text-sm font-semibold text-green-700">Current plan</p>
                   : href ? <a href={`${href}${href.includes("?") ? "&" : "?"}client_reference_id=${ws?.id}`} className="block rounded bg-brand py-2 text-center text-sm font-semibold text-white">Upgrade</a>
-                  : <p className="text-sm text-muted">Payment link not configured.</p>}
+                  : null}
               </div></div>
           );
         })}
       </div>
-      <p className="text-sm text-muted">Plans change only after the payment provider confirms through the webhook. Returning from checkout does not upgrade your plan.</p>
+      <p className="text-sm text-muted">Your plan updates once payment is confirmed. Returning from checkout alone does not change it.</p>
       <div className="card-light p-6"><h2 className="font-semibold">Subscription history</h2>
         <ul className="mt-3 text-sm">{subs?.map((s, i) => <li key={i} className="border-t border-line py-2 capitalize">{s.plan} · {s.status} · {new Date(s.created_at).toLocaleDateString()}</li>)}{!subs?.length && <li className="text-muted">None yet.</li>}</ul></div>
     </div>

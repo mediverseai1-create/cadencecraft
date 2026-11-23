@@ -3,21 +3,7 @@ import type { ReactNode } from "react";
 import { Button, Eyebrow, Section } from "./ui";
 import { LogoMark } from "./Logo";
 
-export const sampleLogos = ["Northwind", "Altura", "Brightpath", "Corvid", "Helix&Co", "Lumen", "Meridian", "Orbital", "Pinecrest", "Quanta", "Stratos", "Veridian"];
-
-export function LogoStrip({ title }: { title?: string }) {
-  const row = [...sampleLogos, ...sampleLogos];
-  return (
-    <div className="overflow-hidden py-10">
-      {title && <p className="mb-8 text-center text-lg font-semibold">{title}</p>}
-      <div className="flex w-max marquee gap-14 whitespace-nowrap">
-        {row.map((l, i) => <span key={i} className="text-2xl font-semibold tracking-tight text-muted/70">{l}</span>)}
-      </div>
-    </div>
-  );
-}
-
-export function ClosingBand({ title = "CadenceCraft agentic AI platform for revenue teams", tagline = "Agents that work every deal, every day, so your team can focus on the conversations that close." }: { title?: string; tagline?: string }) {
+export function ClosingBand({ title = "The AI-native revenue platform for B2B teams", tagline = "CadenceCraft analyzes every account and call, predicts which deals close, decides the next best action and automates the follow-through." }: { title?: string; tagline?: string }) {
   return (
     <section className="band-night px-4 py-20 text-center text-white sm:px-8">
       <div className="mx-auto max-w-[780px]">
@@ -26,7 +12,7 @@ export function ClosingBand({ title = "CadenceCraft agentic AI platform for reve
         <p className="mt-4 text-white/80">{tagline}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Button href="/signup">Sign up</Button>
-          <Button href="/pricing" variant="outlineDark">View pricing info</Button>
+          <Button href="/login" variant="outlineDark">Sign in</Button>
         </div>
       </div>
     </section>
@@ -51,36 +37,32 @@ export function PageHero({ eyebrow, title, children, cta, visual }: { eyebrow: s
 
 export function ProductMock() {
   return (
-    <div className="relative">
+    <div className="relative pb-8 pl-0 sm:pl-6">
       <div className="rounded-2xl border border-line bg-white p-5 shadow-2xl">
-        <div className="flex items-center gap-2 border-b border-line pb-3 text-sm font-semibold"><LogoMark className="h-5 w-5" /> Home</div>
-        <p className="mt-4 font-semibold">👋 Welcome back, Nick</p>
-        <div className="mt-3 rounded-lg border border-brand/50 p-3 text-xs text-muted">Ask a question about the account…</div>
-        <p className="mt-5 text-xs font-semibold">Upcoming meetings</p>
-        {["Sync with GeoCorp / Discovery Call", "Pricing review / Northwind", "QBR prep / Altura"].map((m, i) => (
-          <div key={m} className="mt-2 flex items-center justify-between rounded-lg border border-line px-3 py-2 text-xs">
-            <span>{m}</span><span className="rounded bg-brand px-2 py-1 text-white">Join</span>
-            <span className="sr-only">{i}</span>
-          </div>
+        <div className="flex items-center gap-2 border-b border-line pb-3 text-sm font-semibold"><LogoMark className="h-5 w-5" /> Revenue command center</div>
+        <p className="mt-4 font-semibold">Forecast confidence: 94%</p>
+        <div className="mt-3 rounded-lg border border-brand/50 p-3 text-xs text-muted">Ask the AI about any account, deal or call</div>
+        <p className="mt-5 text-xs font-semibold">Decisions made this week</p>
+        {["Escalated Northwind: no activity for 12 days", "Drafted follow-up for Altura pricing review", "Moved Corvid to commit: champion confirmed"].map((m) => (
+          <div key={m} className="mt-2 rounded-lg border border-line px-3 py-2 text-xs">{m}</div>
         ))}
       </div>
-      <div className="float absolute -bottom-8 -left-6 w-56 rounded-xl border border-line bg-white p-3 shadow-xl">
-        <p className="text-xs font-semibold">Video call</p>
+      <div className="float absolute -bottom-2 left-0 hidden w-56 rounded-xl border border-line bg-white p-3 shadow-xl sm:block">
+        <p className="text-xs font-semibold">Live call analysis</p>
         <div className="mt-2 grid grid-cols-2 gap-1"><div className="h-14 rounded bg-gradient-to-br from-[#c9b8ff] to-[#7b6bff]" /><div className="h-14 rounded bg-gradient-to-br from-[#ffd2b0] to-[#ff9a8b]" /></div>
       </div>
     </div>
   );
 }
 
-export function FeatureBlock({ eyebrow, title, body, bullets, href, reverse }: { eyebrow?: string; title: string; body: string; bullets?: string[]; href?: string; reverse?: boolean }) {
+export function FeatureBlock({ eyebrow, title, body, bullets, reverse }: { eyebrow?: string; title: string; body: string; bullets?: string[]; reverse?: boolean }) {
   return (
     <div className={`grid items-center gap-10 py-10 lg:grid-cols-2 ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
       <div>
         {eyebrow && <Eyebrow dark>{eyebrow}</Eyebrow>}
         <h3 className="mt-3 text-2xl font-semibold text-white md:text-3xl">{title}</h3>
         <p className="mt-4 leading-relaxed text-white/80">{body}</p>
-        {bullets && <ul className="mt-5 space-y-2 text-white/85">{bullets.map((b) => <li key={b} className="flex gap-2"><span className="text-[#8f89ff]">✦</span>{b}</li>)}</ul>}
-        {href && <Link href={href} className="mt-6 inline-block font-semibold text-[#9d97ff] hover:underline">Learn more →</Link>}
+        {bullets && <ul className="mt-5 space-y-2 text-white/85">{bullets.map((b) => <li key={b} className="flex gap-3"><span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8f89ff]" />{b}</li>)}</ul>}
       </div>
       <div className="card-dark p-6">
         <div className="grid grid-cols-3 gap-3">
@@ -112,7 +94,7 @@ export function CardGrid({ items, cols = 3 }: { items: { title: string; body: st
   return (
     <div className={`grid gap-6 ${c}`}>
       {items.map((it) => {
-        const inner = (<><h3 className="text-lg font-semibold">{it.title}</h3><p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{it.body}</p>{it.href && <p className="mt-5 font-semibold text-brand">Learn more →</p>}</>);
+        const inner = (<><h3 className="text-lg font-semibold">{it.title}</h3><p className="mt-3 text-[0.95rem] leading-relaxed text-muted">{it.body}</p></>);
         return it.href ? <Link key={it.title} href={it.href} className="card-light block p-7">{inner}</Link> : <div key={it.title} className="card-light p-7">{inner}</div>;
       })}
     </div>
@@ -126,18 +108,6 @@ export function SectionTitle({ eyebrow, title, intro, center = true, dark = fals
       <h2 className={`mt-3 text-3xl font-semibold leading-tight md:text-[2.5rem] ${dark ? "text-white" : ""}`}>{title}</h2>
       {intro && <p className={`mt-4 leading-relaxed ${dark ? "text-white/80" : "text-muted"}`}>{intro}</p>}
     </div>
-  );
-}
-
-export function Testimonial({ quote, name, role, company }: { quote: string; name: string; role: string; company: string }) {
-  return (
-    <figure className="card-light p-8">
-      <blockquote className="text-lg leading-relaxed">“{quote}”</blockquote>
-      <figcaption className="mt-6 flex items-center gap-3">
-        <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand font-semibold text-white">{name[0]}</span>
-        <span><span className="block font-semibold">{name}</span><span className="text-sm text-muted">{role}, {company}</span></span>
-      </figcaption>
-    </figure>
   );
 }
 

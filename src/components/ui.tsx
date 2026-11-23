@@ -21,5 +21,5 @@ export function Section({ children, className = "", id }: { children: ReactNode;
 }
 
 export function TextLink({ href, children }: { href: string; children: ReactNode }) {
-  return <Link href={href} className="font-semibold text-brand underline-offset-4 hover:underline">{children} →</Link>;
+  return <Link href={href} className="font-semibold text-brand underline-offset-4 hover:underline">{children}</Link>;
 }

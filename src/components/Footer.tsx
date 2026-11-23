@@ -6,10 +6,10 @@ export function Footer() {
   return (
     <footer className="bg-black px-4 pb-10 pt-16 text-white sm:px-8">
       <div className="mx-auto max-w-[1200px]">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_repeat(5,1fr)]">
+        <div className="grid gap-10 md:grid-cols-[1.3fr_repeat(4,1fr)]">
           <div>
             <Logo />
-            <p className="mt-4 max-w-[240px] text-sm text-white/70">The agentic AI platform for revenue teams. Hire agents. Unleash sellers.</p>
+            <p className="mt-4 max-w-[240px] text-sm text-white/70">The AI-native revenue platform for B2B teams. AI analyzes, predicts, decides and automates.</p>
             <Link href="/signup" className="mt-6 inline-block rounded bg-brand px-5 py-2.5 text-sm font-semibold">Sign up</Link>
           </div>
           {footerCols.map((c) => (

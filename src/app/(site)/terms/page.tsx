@@ -1,10 +1,10 @@
 import { InfoPage } from "@/components/InfoPage";
 export const metadata = { title: "Terms" };
 export default function Terms() {
-  return <InfoPage eyebrow="Legal" title="Terms of service" closing={false} intro="Template text. Have counsel review before launch."
+  return <InfoPage eyebrow="Legal" title="Terms of service" closing={false} intro="The terms that govern use of CadenceCraft by business customers."
     sections={[
-      { title: "Use of the service", body: "You may use CadenceCraft for lawful business purposes and are responsible for activity in your workspace." },
-      { title: "Plans and credits", body: "AI features consume credits per the plan. Unused credits do not roll over unless stated." },
-      { title: "Availability", body: "The service is provided as is while in early release." },
+      { title: "Use of the service", body: "CadenceCraft may be used for lawful business purposes. Customers are responsible for activity in their workspace." },
+      { title: "Plans and credits", body: "AI features consume credits according to the plan. Credits reset on each billing cycle." },
+      { title: "Availability", body: "We work to keep the service available and will communicate material changes in advance." },
     ]} />;
 }

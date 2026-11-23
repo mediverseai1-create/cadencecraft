@@ -1,3 +1,4 @@
+import { agentLabel } from "@/lib/labels";
 import Link from "next/link";
 import { serverClient } from "@/lib/supabase";
 import { money, rollup } from "@/lib/forecast";
@@ -21,7 +22,7 @@ export default async function Dashboard() {
         <div className="card-light p-6"><h2 className="font-semibold">Credits</h2><p className="mt-2 text-muted">{ws ? `${(ws.credits_total - ws.credits_used).toLocaleString()} of ${ws.credits_total.toLocaleString()} remaining` : ""}</p>
           <div className="mt-3 h-2 rounded bg-lavender"><div className="h-2 rounded bg-brand" style={{ width: `${ws ? Math.min(100, (ws.credits_used / ws.credits_total) * 100) : 0}%` }} /></div></div>
         <div className="card-light p-6"><h2 className="font-semibold">Recent agent runs</h2>
-          <ul className="mt-3 space-y-2 text-sm">{(runs ?? []).map((x, i) => <li key={i} className="flex justify-between"><span>{x.agent}</span><span className="text-muted">{x.credits} credits</span></li>)}{!runs?.length && <li className="text-muted">None yet.</li>}</ul></div>
+          <ul className="mt-3 space-y-2 text-sm">{(runs ?? []).map((x, i) => <li key={i} className="flex justify-between"><span>{agentLabel(x.agent)}</span><span className="text-muted">{x.credits} credits</span></li>)}{!runs?.length && <li className="text-muted">None yet.</li>}</ul></div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { serverClient } from "@/lib/supabase";
 import { LogoMark } from "@/components/Logo";
 import { signOut } from "./actions";
 
-export const metadata = { title: "App" };
+export const metadata = { title: "Workspace" };
 
 const nav = [
   { href: "/app", label: "Home", icon: Home },
@@ -40,7 +40,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             </Link>
           ))}
         </nav>
-        <div className="hidden px-5 py-4 text-xs text-white/70 md:block">
+        <div className="px-5 py-4 text-xs text-white/70">
           <p className="font-semibold text-white">{ws?.name}</p>
           <p className="capitalize">{ws?.plan} plan · {left.toLocaleString()} credits left</p>
           <form action={signOut}><button className="mt-3 underline">Sign out</button></form>

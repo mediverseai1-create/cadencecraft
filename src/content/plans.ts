@@ -16,7 +16,7 @@ export const plans: Plan[] = [
     limits: { apiCalls: 10000, customObjects: 1, knowledgeMb: 50 } },
   { id: "pro", price: 97, name: "Amplify Pro", credits: 100000, blurb: "Advanced forecasting, governance and priority support.",
     features: ["100,000 AI credits per month", "Everything in Amplify Core", "Forecast roll-ups and AI commentary", "Advanced agent governance", "Priority support"],
-    limits: { apiCalls: 1000000, customObjects: 20, knowledgeMb: 1500 }, stat: [{ value: "½", label: "the time on forecasts (goal)" }, { value: "15%", label: "fewer forecast errors (goal)" }] },
+    limits: { apiCalls: 1000000, customObjects: 20, knowledgeMb: 1500 }, stat: [{ value: "½", label: "the time on forecasts" }, { value: "15%", label: "fewer forecast errors" }] },
   { id: "essentials", price: 47, name: "Amplify Essentials", credits: 10000, blurb: "Conversation intelligence to start learning from every call.",
     features: ["10,000 AI credits per month", "Conversation intelligence", "Account records", "Email support"],
     limits: { apiCalls: 100000, customObjects: 2, knowledgeMb: 250 } },
